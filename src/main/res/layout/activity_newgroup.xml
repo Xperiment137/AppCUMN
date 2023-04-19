@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/pain_forest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="15dp">
+    <!--tools:context=""-->
+
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00100F0F"
+        android:backgroundTintMode="add"
+        android:hint="Nombre del grupo"
+        android:layout_marginTop="20dp"
+        android:minHeight="48dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+
+    <Button
+        android:id="@+id/botonnext"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginTop="40dp"
+        android:text="Crear"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="305dp" />
+
+
+</LinearLayout>

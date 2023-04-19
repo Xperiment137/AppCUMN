@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Plant Detector</string>
+    <string name="navigation_drawer_open">hola</string>
+    <string name="navigation_drawer_close">adios</string>
+</resources>

@@ -1,0 +1,369 @@
+abedul ,betula ,arbol
+abelia, abelia grandiflora,arbusto
+abeto,abies,arbol
+abrótano,santolina,arbusto
+abutilón,abutilón,trepadora
+acacia de Constantinopla,albizia julibrissin,arbol
+acacia de tres espinas,gleditsia triacanthos,arbol
+acebo,ilex aquifolium,arbol
+acerolo,sorbus domestica,arbol
+aciano, centaurea cyanus,anual
+aciano, hedyothis,rocalla
+acirón, acer monspessulanum,arbol
+actinidia, actinidia,trepadora
+adelfa,nerium oleander,arbol
+agapanto, agapanthus,bulbo
+agerato,  ageratum,anual
+agracejo, berberis tumbergii,arbusto
+aguileña, aguilegia,perenne
+ailanto,ailanthus altissima,arbol
+aladierno,rhamnus alatemus,arbol
+álamo,populus,arbol
+albahaca, ocimum basilicum,aromáticas
+albaricoquero,,arbol
+alcachofa, cynara scolymus,hortaliza
+alcanfor,laurus camphora,arbol
+alcornoque,quercus,arbol
+alegría de la casa, impatiens,anual
+alelí, matthiola,anual
+alerce,larix,arbol
+algarrobo,ceratonia,arbol
+aligustre, ligustrum ,arbusto
+aliso, lobularia,anual
+almendro, prunus dulcis,arbol
+almez,celtil australis,arbol
+alquequenje, physalis,perenne
+alquimilla,  alchemilla mollis,perenne
+altramuz, lupinus,perenne
+amapola galesa, meconopsis cámbrica,rocalla
+amapola oriental, papaver orientale,perenne
+amapola, papaver,anual
+anémona, anemone,bulbo
+anémona, anémone,bulbo
+angélica, angélica archangelica,aromáticas
+añil, indigofera heterantha,arbusto
+apio nabo, apium graveolens,hortaliza
+apio, apium,hortaliza
+aralia, fatsia japónica,arbusto
+arañuela, nigella,anual
+araucaria,araucaria imbricata,arbol
+arbol de judea,cercis siliquastrum,arbol
+arbol de Jupiter,lagestroemia indica,arbol
+arbol de la seda,albizia julibrissin,arbol
+arbol del jabón,koelreuteria paniculata,arbol
+arbol del paraiso,eleagnus angustifolia,arbol
+arce,acer,arbol
+armeria, armeria,rocalla
+artemisa, abrotanum,aromáticas
+arzolla, azolla caroliniana,acuaticas
+aster de África, felicia armelloides,anual
+astilbe, astilbe,perenne
+aubrieta, aubrieta,rocalla
+aucuba, aucuba japónica,arbusto
+avellano,corylus,arbol
+azafrán, crocus vernus,bulbo
+azalea rhododendron,arbusto
+azucena, arisaema,bulbo
+azufaifo,ziziphus jujuba,arbol
+bambú,  pleioblastus,arbusto
+berenjena, solanum melongena,hortaliza
+boca de dragón,  antirrhinum  ,anual
+boj,buxus,arbol
+bola de nieve, viburnum opulus,arbusto
+bonetero,euonymus europaeus,arbol
+borraja, borago officinalis,aromáticas
+brecina, calluna vulgaris,arbusto
+brezo, erika carnea,arbusto
+buddleia, buddleia davidii,arbusto
+buganvilla, bougainvillea,trepadora
+cala, zantedeschia,acuaticas
+calabacín, cucurbita pepo,hortaliza
+calabaza, cucurbita,hortaliza
+calceolaria, calceolaria,anual
+caléndula, caléndula officinalis,anual
+camelia, camellia japonica,arbusto
+campanilla de invierno, galanthus nivalis,bulbo
+campanillas, ipomoea,trepadora
+campanula, campanula,rocalla
+cantueso, lavandula stoechas,arbusto
+capuchina, tropaeolum,anual
+capuchina, tropaeolum,trepadora
+caqui,diospyros,arbol
+cardencha, dipsacus fullonum,aromáticas
+cardo, echinops,perenne
+carpe,calpinus,arbol
+carpenteria, carpenteria californica  ,arbusto
+carraspique, iberis,rocalla
+castaño de Indias,aesculus,arbol
+castaño,castanácea sátiva,arbol
+catalpa,bignonia,arbol
+cebolla, allium cepa,hortaliza
+cebollas ornamentales, allium,bulbo
+cebollinos, allium schoenoprasum,aromáticas
+cedro,cedrus,arbol
+celinda, filadelfo,arbusto
+celosía, celosía,anual
+cerezo, prunus avium,frutal
+cerezo japonés, prunus,arbol
+chaenomeles, chaenomeles,arbusto
+chile, capsicum annuum  ,hortaliza
+chirivía, pastinaca sativa,hortaliza
+chopo,populus ,arbol
+ciclamen,  ciclamen,bulbo
+cilantro, coriander sativum,aromáticas
+cineraria, senecio,arbusto
+ciprés,cupresus,arbol
+ciruelo, prunus doméstica,frutal
+citiso o laburno,laburmocytisus,arbol
+clavel chino, dianthus chinensis,anual
+clavellina, dianthus,rocalla
+clavelón de la India, tagetes,anual
+clemátide, clematis,trepadora
+cobaea, cobaea scandens,trepadora
+codeso, cytisus,arbusto
+col roja, brassica oleracea capitata 2,hortaliza
+col, brassica oleracea,hortaliza
+cola de caballo,  hippuris vulgaris,acuaticas
+coleo, coleus,anual
+coles de Bruselas, brassica oleracea,hortaliza
+coliflor, brassica oleracea,hortaliza
+cólquico , colchicum,bulbo
+corazoncillo, hypericum beanii,arbusto
+coreopsis, coreopsis,anual
+cornejo, cornus ,arbusto
+cornicabra,pistacia,arbol
+corona imperial, fritillaria,bulbo
+coronilla, coronilla glauca,trepadora
+cosmos, cosmos bipinnatus,anual
+cotoneaster, cotoneaster,arbusto
+criptomeria,cryptomeria japonica,arbol
+crisantemo, dendranthema,perenne
+crocosmia, crocosmia,bulbo
+dalia, dahlia,bulbo
+damascena, prunus insititia,frutal
+damasquina, tagetes patula,anual
+daphne, daphne burkwoodii,arbusto
+dedalera, digitalis,bienal
+diente de perro, erytronium dens-canis,bulbo
+drago,dracaena,arbol
+durillo, viburnum tinus,arbusto
+edelweiss , leontopodium alpinum,rocalla
+eleagno, eleagnus,arbusto
+encina,quercus,arbol
+enebro,juniperus,arbol
+eneldo, anethum,aromáticas
+escallonia , escallonia,arbusto
+escarola, cichorium endivia,hortaliza
+escila, scilla,bulbo
+espadaña, thypa,acuaticas
+espárrago, asparagus,hortaliza
+espinacas, spinacia oleracea,hortaliza
+espino albar,crataegus,arbol
+espirea de Japón, spirea japónica,arbusto
+espliego, lavandula angustifolia,aromáticas
+espuela de caballero, delphinium elatum,perenne
+estatice, limonium sinuatum,anual
+estragón, Artemisa,aromáticas
+eucalipto,eucalyptus,arbol
+evónimo, euonymus,arbusto
+falso pimentero,schinues molle,arbol
+farolillo, campanula carpatica,rocalla
+flámula mayor,  ranunculus lingua,acuaticas
+flor de primavera, arum italicum,bulbo
+flox , phlox subulata,rocalla
+forsythia, forsythia,arbusto
+frambueso, rubus idaeus,frutal
+fresa, fragaria,frutal
+fresia, freesia  ,bulbo
+fresno,fraxinus,arbol
+fucsia, fuchsia,anual
+fustete, cotinus,arbusto
+garrya, garrya ellíptica,arbusto
+gazania, gazania,anual
+genciana, gentiana,rocalla
+geranio , geranium,perenne
+ginkgo,ginkgo biloba,arbol
+girasol, helianthus annuus,anual
+gladiolo, gladiolus,bulbo
+glicina, wisteria floribunda,trepadora
+granado,punica granatum,arbol
+grosellero, rives sanguineum,arbusto
+guisante, pisum sativum,hortaliza
+gunnera , gunnera manicata,acuaticas
+haba, vicia faba,hortaliza
+hamamelis, hamamelis mollis  ,arbusto
+hámster, after,perenne
+haya,fagus,arbol
+hebe, hebe salicifolia,hebe salicifolia
+heliotropo, heliotropium arborescens,anual
+hemerocallis, hemerocallis,perenne
+hidrocotila , hydrocotyle vulgaris,acuaticas
+hiedra de Boston, parthenocissus tricuspidata,trepadora
+hiedra, hedera helix,trepadora
+hierba centella, calta palustris,acuaticas
+hierba de las pampas, cortaderia selloana,perenne
+hierba del asno, oenothera,rocalla
+hierba Luisa, aloysia,aromáticas
+higuera, ficus carica,frutal
+hinojo, foeniculum vulgare,aromáticas
+hipérico, hypericum,perenne
+hisopo, hyssopus officinalis,aromáticas
+hortensia, hydrangea macrophylla,arbusto
+hosta, hosta,perenne
+iris, iris,bulbo
+jacarandá, jacaranda mimosifolia,arbol
+jacinto de agua, eichhornia crassipes,acuaticas
+jacinto, hyacinthus,bulbo
+jara , cistus,arbusto
+jazmín común ,  jasminum officinale,trepadora
+jazmín de San José, jasminum nudiflorum,trepadora
+jeringuilla, philadelphus ,arbusto
+judía trepadora, phaseolus coccineus,hortaliza
+judía, phaseolus vulgaris,hortaliza
+kalmia, kalmia latifolia,arbusto
+lantana, lantana Cámara,anual
+laurel ,laurus nobilis,arbol
+laurocerezo, prunus laurocerasus,arbusto
+leche de gallina, ornithogalum,bulbo
+lechuga de agua, pistia stratiotes,acuaticas
+lechuga, lactuca sativa,hortaliza
+lentisco,pistacia,arbol
+ligularia, ligularia,acuaticas
+lila ,syringa vulgaris,arbol
+lila californiana, ceanothus,arbusto
+lilium, lilium,bulbo
+limonero,citrus limonum,arbol
+lino, linum,perenne
+liquidambar,,arbol
+llantén de agua coma alisma plantago aquatica,acuaticas
+lobelia, lobelia,anual
+loro,prunus lusitanica,arbol
+lunaria, lunaria annua,bienal
+lúpulo dorado, humulus lupulus,trepadora
+madreselva, lonicera,trepadora
+madroño,arbutus unedo,arbol
+magnolia, magnolia,arbol
+mahonia japonica, mahonia japonica,arbusto
+maíz, zea mays,hortaliza
+malva arbórea ,lavatera
+malvarrosa, alecea rosea,bienal
+mandarino,prunus nobilis,arbol
+manzanilla, chamaemelum,aromáticas
+manzano, malus doméstica,frutal
+margarita africana, osteospermum,perenne
+margarita dorada , anthemis  tinctoria,perenne
+margarita, argyranthemum,anual
+matalobos, aconitum,trepadora
+maya, bellis perennis,anual
+melisa, melissa,aromáticas
+melocotonero, prunus persica,frutal
+melón, curcumina melo,frutal
+membrillo, sidonia oblonga,frutal
+menta, menta spicata,aromáticas
+mimosa,acacia dealbata,arbol
+mimulo coma y mimulus,anual
+minutisa, dianthus barbatus,bienal
+morera,morus,arbol
+muguete, convallaria,bulbo
+nabo, brassica napus,hortaliza
+naranjo,citrus sinensis,arbol
+narciso, narcissus,bulbo
+nava, brassica rapa,hortaliza
+nenúfar, nymphaea,acuaticas
+níspero,,arbol
+nogal, juglans,arbol
+nomeolvides, miosotis,bienal
+ojo de poeta, thumbergia alata,trepadora
+olearia, olearia haastii,anual
+olivo, olea europea,arbol
+olmo,ulmus,arbol
+orégano, origanum,aromáticas
+orejas de elefante, bergenia,perenne
+orquídea, dactylorhiza,bulbo
+ostria ,ostrya carpinifolia,arbol
+oxalis, oxalis,rocalla
+palmera,phoenix,arbol
+palmito,chamaerops,arbol
+parkinsonia,parkinsonia aculeata,arbol
+parra virgen, parthenocissus quinquefolio,trepadora
+parrotia ,,arbol
+pasionaria, pasiflora caerulea,trepadora
+patata trepadora, solanum crispum,trepadora
+patata, solanum,hortaliza
+paulonia,paulownia tomentosa,arbol
+pensamiento, viola,anual
+pepino, cucumis sativus,hortaliza
+peral, pyrus,frutal
+perejil, petroselinum crispum,aromáticas
+perifollo, anthriscus carrefolium,aromáticas
+pernettya, pernettya mucronata,arbusto
+petunia, petunia,anual
+pícea,picea,arbol
+pieris ,pieris Formosa
+pimiento, capsicum,hortaliza
+pino,pinus,arbol
+piracanto, pyracantha,arbusto
+pitosporo, pittosporum,arbusto
+planta del tabaco, nicotiana,anual
+plátano,platanus,arbol
+pontederia, pontederia cordata,acuaticas
+potentilla, potentilla fruticosa,anual
+primavera gigante, prímula florindae,acuaticas
+primavera, primula vulgaris,rocalla
+puerro, allium porrum,hortaliza
+pulmonaria, pulmonaria,perenne
+pulsatila, pulsatilla,rocalla
+quejigo,quercus faginea,arbol
+querria, kerria japonica,arbusto
+rábano, raphanus,hortaliza
+raigón de Canada,gymnocladus dioicus,arbol
+ranúnculo, ranunculus,bulbo
+reina Margarita, callistephus chinensis,anual
+retama, genista,arbusto
+ricino, ricinus,anual
+robinia,robinia pseudoacacia,arbol
+roble,quercus,arbol
+rododendro, rododendron,arbusto
+romero, rosmarinus officinalis,aromáticas
+rosal, rosa,arbusto
+ruda, ruta graveolens,aromáticas
+ruibarbo, rheum,frutal
+sabina,juniperus,arbol
+salvia,  salvia officinalis,aromáticas
+sarcococca, sarcococca,arbusto
+sarracenia, sarracenia,acuaticas
+sauce,salix,arbol
+saúco,sambucus nigra,arbol
+saxífraga, saxífraga,rocalla
+secuoya,sequoiadendron,arbol
+sedo, sedum,rocalla
+serbal,sorbus,arbol
+siempre viva, helichrysum,anual
+skimmia, skimmia japonica,arbusto
+solano, solanum,trepadora
+tamariz,tamarix,arbol
+tejo,taxus,arbol
+tilo,tilia,arbol
+tomate, lycopersicum,hortaliza
+tomillo, thymus vulgaris,aromáticas
+tritoma, kniphofia,perenne
+trochodendron, trochodendron aralioides,arbol
+tulipán, tulipa,bulbo
+tulipífero ,liriodendron,arbol
+tupelo negro,nyssa sylvatica,arbol
+tuya,thuja,arbol
+uva crespa, rives,frutal
+valeriana, valeriana officinalis,aromáticas
+verbena, verbena,perenne
+verdolaga, portulaca,anual
+viborera, echium,bienal
+vid, vitis vinifera,frutal
+vincapervinca, vinca major,perenne
+weigela, weigela,arbusto
+whasingtonia,whasingtonia filifera,arbol
+yuca, yuca gloriosa,perenne
+zanahoria, daucus,hortaliza
+zarzamora, rubus fruticosus,frutal
+zelkova,zelkova serrata,arbol
+zinia, zinia  ,anual
+zumaque,rhus typhina,arbol

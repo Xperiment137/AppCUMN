@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/pain_forest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".MoveMenu">
+
+    <Button
+        android:id="@+id/bot3"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:text="Identificar"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="134dp" />
+
+    <Button
+        android:id="@+id/bot4"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:text="Estadisticas"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="305dp" />
+
+    <Button
+        android:id="@+id/bot5"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:text="Grupos"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="469dp" />
+
+</LinearLayout>
