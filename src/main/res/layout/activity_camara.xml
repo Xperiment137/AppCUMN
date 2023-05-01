@@ -8,54 +8,75 @@ android:gravity="center_vertical"
 android:orientation="vertical"
 tools:context=".PhotoUpload">
 <!--tools:context=""-->
-
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <TextView
+        android:id="@+id/texto"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeStepGranularity="2sp"
+        android:background="@color/black"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ListADD">
-        <ImageView
-            android:id="@+id/vista"
-            android:src="@drawable/ic_launcher_background"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:text="Elije una caracteristica:"
+        android:textColor="#4CAF50"
+        android:textSize="25sp" /><!--red color for text view-->
+      <ImageView
+        android:id="@+id/visor"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+        />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/flor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00100F0F"
-            android:backgroundTintMode="add"
-            android:hint="Nombre de usuario"
-            android:layout_marginTop="120dp"
-            android:minHeight="408dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:visibility="visible" />
+            android:background="#0DD650"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#139718"
+            android:text="Flor"
+            android:textColor="#000000" />
 
-
-        <!-- ToolBar widget -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/hoja"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0F9D58"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Titulo"
-            app:titleTextColor="#ffff" />
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="59dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="18dp"
-            android:layout_alignRight="@id/toolbar"
-            app:srcCompat="@drawable/arrow" />
+            android:layout_marginTop="20dp"
+            android:background="#0DD650"
+            android:backgroundTint="#139718"
+            android:text="Hoja"
+            android:textColor="#000000" />
 
+      <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/corteza"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#0DD650"
+        android:backgroundTint="#139718"
+        android:text="Corteza"
+        android:textColor="#000000" />
 
-    </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fruto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#0DD650"
+        android:backgroundTint="#139718"
+        android:text="Fruto"
+        android:textColor="#000000" />
 
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/inicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#0DD650"
+        android:backgroundTint="#139718"
+        android:text="Volver al inicio"
+        android:textColor="#000000" />
 
 </LinearLayout>

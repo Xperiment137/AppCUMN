@@ -30,7 +30,7 @@ public class PhotoUpload  extends AppCompatActivity {
     MutableLiveData<String> listen;
     private static final int PERMISSION_REQUEST_CODE = 200;
 
-    private boolean checkPermission() {
+    private boolean checkPermissionCamera() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
@@ -38,12 +38,27 @@ public class PhotoUpload  extends AppCompatActivity {
         }
         return true;
     }
-
+    private boolean checkPermissionRead() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            return false;
+        }
+        return true;
+    }
+    private boolean checkPermissionWrite() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            return false;
+        }
+        return true;
+    }
 
     private void requestPermission() {
 
         ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.CAMERA},
+                new String[]{Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 PERMISSION_REQUEST_CODE);
     }
 
@@ -120,7 +135,7 @@ public class PhotoUpload  extends AppCompatActivity {
         listen.setValue("nada");
 
 
-        if (checkPermission()) {
+        if (checkPermissionCamera() &&  checkPermissionRead() && checkPermissionWrite()) {
             showMessageOtype();
         } else {
             requestPermission();

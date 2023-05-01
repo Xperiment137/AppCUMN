@@ -14,24 +14,30 @@
 
     <Button
         android:id="@+id/bot3"
+        android:background="#139718"
         android:layout_width="match_parent"
         android:layout_height="88dp"
         android:text="Identificar"
+        android:layout_marginTop="20dp"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="134dp" />
 
     <Button
         android:id="@+id/bot4"
+        android:background="#139718"
         android:layout_width="match_parent"
         android:layout_height="72dp"
+        android:layout_marginTop="20dp"
         android:text="Estadisticas"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="305dp" />
 
     <Button
         android:id="@+id/bot5"
+        android:background="#139718"
         android:layout_width="match_parent"
         android:layout_height="74dp"
+        android:layout_marginTop="20dp"
         android:text="Grupos"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="469dp" />

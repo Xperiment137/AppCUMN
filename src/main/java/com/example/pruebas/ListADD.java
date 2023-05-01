@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
@@ -79,21 +81,26 @@ public class ListADD extends AppCompatActivity {
 
     }
 
-    private void writeToFile(String data) {
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    public void  writeToFile (String data){
         String savedValue = LoadName();
+        String fileName = savedValue + ".txt";
         String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Grupos/";
+        String pathfin = rootPath +  savedValue + ".txt";
 
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getApplicationContext().openFileOutput(rootPath +  savedValue + ".txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
+        File newDir = new File(pathfin);
+        try{
+            if (!newDir.exists()) {
+                Log.e("TAG", "Ya existe: " + fileName);
+            }
+            FileOutputStream writer = new FileOutputStream(new File(rootPath,savedValue + ".txt"));
+            writer.write(data.getBytes());
+            writer.close();
+            Log.e("TAG", "Wrote to file: " + fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
 
     public static String loadTextFromAssets(Context context, String assetsPath, Charset charset) throws IOException {
         InputStream is = context.getResources().getAssets().open(assetsPath);
@@ -155,7 +162,7 @@ public class ListADD extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                //save in the file the string
+                writeToFile(textoPlantas);
                 startActivity(new Intent(ListADD.this, ListPeople.class));
             }
         });
