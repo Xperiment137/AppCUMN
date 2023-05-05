@@ -26,8 +26,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class PhotoUpload  extends AppCompatActivity {
-    AlertDialog.Builder builder;
-    MutableLiveData<String> listen;
+    private AlertDialog.Builder builder;
+    private MutableLiveData<String> listen;
     private static final int PERMISSION_REQUEST_CODE = 200;
 
     private boolean checkPermissionCamera() {

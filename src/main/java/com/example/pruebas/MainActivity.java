@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore Db;
     private boolean choose = false;
-    MutableLiveData<String> listen;
+    private MutableLiveData<String> listen;
 
     private int countChar(String str)
     {
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         ps.setVisibility(View.GONE);
         user.setVisibility(View.GONE);
 
-       /* String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Grupos/";
+        /*String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Grupos/";
         File dir = new File(rootPath);
         if (dir.isDirectory())
         {

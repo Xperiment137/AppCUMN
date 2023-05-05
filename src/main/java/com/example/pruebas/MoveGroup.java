@@ -38,7 +38,7 @@ public class MoveGroup extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                startActivity(new Intent(MoveGroup.this, newGroup.class));
+                startActivity(new Intent(MoveGroup.this, ListGroup.class));
             }
         });
     }

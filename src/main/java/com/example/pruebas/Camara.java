@@ -4,15 +4,16 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,17 +51,25 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.text.Normalizer;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class Camara  extends AppCompatActivity {
 
-    ActivityResultLauncher activityResultLauncher;
-    Button bflor,bcorteza,bhoja,bfruto,bsalir;
-    TextView texto;
-    ImageView visor;
-    Uri uri;
+    private ActivityResultLauncher activityResultLauncher;
+    private Button bflor,bcorteza,bhoja,bfruto,bsalir;
+    private TextView texto;
+    private ImageView visor;
+    private Uri uri;
+    private String activo,comun;
+    private ArrayList<String> list,list2;
+    private FirebaseFirestore Db;
 
-    private static final String PROJECT = "all"; // try "weurope" or "canada"
+
+    private static final String PROJECT = "weurope"; // try "weurope" or "canada"
     private static final String API_URL = "/v2/identify/" + PROJECT + "?api-key=";
     private static final String API_PRIVATE_KEY = "2b102ii3ydTnBVlQ6gbHTUEBu"; // secret
     private static final String API_LANG = "&lang=es";
@@ -92,21 +111,43 @@ public class Camara  extends AppCompatActivity {
                         JSONObject json = new JSONObject(responseBody);
                         JSONArray pages = json.getJSONArray("results");
                         String best = json.getString("bestMatch");
-                        Log.e("obj", pages.getJSONObject(0).getJSONObject("species").getJSONArray("commonNames").getString(0));
-                        String comun = pages.getJSONObject(0).getJSONObject("species").getJSONArray("commonNames").getString(0);
-                        Log.e("good", comun);
-                        Toast.makeText(Camara.this, comun, Toast.LENGTH_SHORT).show();
-                        //String best = jsonObject.getString("bestMatch");
-                        //JSONArray comoon = jsonObject.getJSONArray("commonNames");
+                        //("obj", pages.getJSONObject(0).getJSONObject("species").getJSONArray("commonNames").getString(0));
+                        if(pages.getJSONObject(0).getJSONObject("species").getJSONArray("commonNames").length() == 0){
+
+                            texto.setText("Nombre científico: " + best + "\n" + "Nombre común: No consta en la BD");
+                            comun = null;
+
+                        }else {
+                            comun = pages.getJSONObject(0).getJSONObject("species").getJSONArray("commonNames").getString(0);
+                            //Log.e("good", comun);
+                            Toast.makeText(Camara.this, comun, Toast.LENGTH_SHORT).show();
+                            //String best = jsonObject.getString("bestMatch");
+                            //JSONArray comoon = jsonObject.getJSONArray("commonNames");
+                            texto.setText("Nombre científico: " + best + "\n" + "Nombre común: " + comun);
+                        }
                         bhoja.setVisibility(View.GONE);
                         bfruto.setVisibility(View.GONE);
                         bflor.setVisibility(View.GONE);
                         bcorteza.setVisibility(View.GONE);
-                        texto.setText("Nombre científico: " + best + "\n" + "Nombre común: " + comun);
                         visor.setImageURI(uri);
                         texto.setVisibility(View.VISIBLE);
                         visor.setVisibility(View.VISIBLE);
                         bsalir.setVisibility(View.VISIBLE);
+                        if(comun != null) {
+                            if (activo != "") {
+                                //Log.e("listaf",list.toString());
+                                // Log.e("lista2f",list2.toString());
+                                Log.e("comun", comun);
+                                String auc = FormatearEspecie(comun);
+                                if (list2.contains(auc)) {
+                                    int pos = list2.indexOf(auc);
+                                    list.remove(pos);
+                                    Toast.makeText(Camara.this, "Has descubierto: " + comun + " para tu grupo " + activo, Toast.LENGTH_LONG).show();
+
+                                }
+                                DeletePlanta();
+                            }
+                        }
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
@@ -142,6 +183,81 @@ public class Camara  extends AppCompatActivity {
         return f;
     }
 
+    private String LoadData( String email) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String savedValue = sharedPreferences.getString(email,"");
+        return savedValue;
+    }
+
+    private String FormatearEspecie(String aux){
+
+        aux = Normalizer.normalize(aux, Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        aux = aux.toLowerCase();
+        return aux;
+
+    }
+
+    private  void FormatearLista(){
+
+        for(int i = 0;i<list.size();i++) {
+            String aux = FormatearEspecie(list.get(i));
+            list2.set(i,aux);
+        }
+        Log.e("lista:", list2.toString());
+    }
+
+
+
+
+    private void GetData(String grupo){
+        DocumentReference docRef = Db.collection("Grupos").document(grupo);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.e("lista1",document.getData().toString());
+                        list = (ArrayList<String>) document.get("Plantas");
+                        //Log.e("lista1",list.toString());
+                    } else {
+                        Log.d("no", "No such document");
+                    }
+                } else {
+                    Log.d("ns", "get failed with ", task.getException());
+                }
+            }
+        });
+
+    }
+    private void DeletePlanta() {
+
+        Map<String, Object> group = new HashMap<>();
+        group.put("Plantas",list);
+
+        // creating a collection reference
+        // for our Firebase Firestore database.
+        CollectionReference grupos = Db.collection("Grupos");
+
+
+        // below method is use to add data to Firebase Firestore.
+        grupos.document(activo).update(group).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void Avoid) {
+                // after the data addition is successful
+                // we are displaying a success toast message.
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // this method is called when the data addition process is failed.
+                // displaying a toast message when data addition is failed.
+                Toast.makeText(Camara.this, "Fail to chage specie in DB\n" + e, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
 
@@ -152,6 +268,9 @@ public class Camara  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camara);
+        Db = FirebaseFirestore.getInstance();
+        list = new ArrayList<String>();
+        list2 = new ArrayList<String>();
         bflor = findViewById(R.id.flor);
         bcorteza = findViewById(R.id.corteza);
         bhoja = findViewById(R.id.hoja);
@@ -167,6 +286,10 @@ public class Camara  extends AppCompatActivity {
         bsalir.setVisibility(View.GONE);
         texto.setVisibility(View.GONE);
         visor.setVisibility(View.GONE);
+
+        activo = LoadData("select");
+        Log.e("ac",activo);
+
 
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             public void onActivityResult(ActivityResult result) {

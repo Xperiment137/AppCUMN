@@ -34,10 +34,10 @@ import java.util.Scanner;
 
 public class ListADD extends AppCompatActivity {
 
-    ListView listView;
-    ArrayList<String> list,words;
-    ArrayAdapter adapter;
-    String textoPlantas = "";
+    private ListView listView;
+    private ArrayList<String> list,words;
+    private ArrayAdapter adapter;
+    private String textoPlantas = "";
 
 
     private String LoadName() {

@@ -22,6 +22,9 @@
         <activity android:name=".PhotoUpload"></activity>
         <activity android:name=".Camara"></activity>
         <activity android:name=".Galeria"></activity>
+        <activity android:name=".ListGroup"></activity>
+        <activity android:name=".datalist"></activity>
+        <activity android:name=".listStat"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

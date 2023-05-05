@@ -48,16 +48,16 @@ import java.util.Map;
 public class ListPeople extends AppCompatActivity {
 
 
-    ListView listView;
-    ArrayList<String> list;
-    ArrayList <String> plat,pers,grup;
-    ArrayAdapter adapter;
+    private ListView listView;
+    private  ArrayList<String> list;
+    private ArrayList <String> plat,pers,grup;
+    private ArrayAdapter adapter;
     private Button add,add2;
     private FirebaseFirestore Db;
     private EditText editText;
     private  int cuenta = 0;
-    String textoPersonas = "", Lider = "";
-    String name = "";
+    private String textoPersonas = "", Lider = "";
+    private String name = "";
 
 
 
@@ -193,7 +193,7 @@ public class ListPeople extends AppCompatActivity {
         // añadir los grupos a cada participante
         pers.add(Lider);
         for(int i = 0; i < pers.toArray().length;i++) {
-            grupos.document(pers.toArray()[i].toString()).set(group).addOnSuccessListener(new OnSuccessListener<Void>() {
+            grupos.document(pers.toArray()[i].toString()).update(group).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void Avoid) {
                     // after the data addition is successful

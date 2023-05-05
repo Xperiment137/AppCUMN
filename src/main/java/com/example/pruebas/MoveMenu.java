@@ -27,7 +27,7 @@ public class MoveMenu  extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                startActivity(new Intent(MoveMenu.this, ListADD.class));
+                startActivity(new Intent(MoveMenu.this, listStat.class));
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {

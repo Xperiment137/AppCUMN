@@ -142,9 +142,9 @@ public class newGroup extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
-                ExistGroup(name.getText().toString());
-
+              if(!name.getText().toString().isEmpty()) {
+                  ExistGroup(name.getText().toString());
+              }
             }
         });
 
