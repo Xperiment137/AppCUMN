@@ -61,7 +61,7 @@ public class ListGroup extends AppCompatActivity {
     private FirebaseFirestore Db;
     private AlertDialog.Builder builder;
     private ListView listView;
-    private String activo = "";
+    private String activo = "",username = "";
 
 
     private String LoadEmail( String email) {
@@ -84,7 +84,7 @@ public class ListGroup extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
+                                username = document.getString("Nombre");
                                 list = (ArrayList<String>)document.get("Grupos");
                                 if(list!=null) {
                                     if(!list.isEmpty()) {
@@ -136,11 +136,15 @@ public class ListGroup extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        Log.d("si", "DocumentSnapshot data: " + document.getData());
-                        list2 = (ArrayList<String>) document.get("Participantes");
-                        list2.add(document.getString("Lider"));
-                        Log.e("act", list2.toString());
-                        listen2.setValue("borrar");
+                        if(username.equals(document.getString("Lider"))) {
+                            Log.d("si", "DocumentSnapshot data: " + document.getData());
+                            list2 = (ArrayList<String>) document.get("Participantes");
+                            list2.add(document.getString("Lider"));
+                            Log.e("act", list2.toString());
+                            listen2.setValue("borrar");
+                        }else{
+                            Toast.makeText(ListGroup.this, "Solo puedes borrar grupos de los que seas lider", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         Log.d("no", "No such document");
                     }
@@ -151,6 +155,7 @@ public class ListGroup extends AppCompatActivity {
         });
 
     }
+
 
     private void DeleteGrouofUser(String name) {
 
@@ -170,7 +175,7 @@ public class ListGroup extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     // this method is called when the data addition process is failed.
                     // displaying a toast message when data addition is failed.
-                    Toast.makeText(ListGroup.this, "Fallo al borrar grupo \n" + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListGroup.this, "Fail to add Group \n" + e, Toast.LENGTH_SHORT).show();
                 }
             });
         }

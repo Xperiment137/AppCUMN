@@ -1,22 +1,15 @@
 package com.example.pruebas;
-import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.Observable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -36,6 +29,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,10 +62,10 @@ public class Galeria  extends AppCompatActivity {
     private ImageView visor;
     private Toolbar toolbar;
     private Uri uri;
-    private String activo,comun;
+    private String activo,comun,textoStats,name;
     private ArrayList<String> list,list2;
     private FirebaseFirestore Db;
-
+    private Map<String, Integer> stats = new HashMap<>();
 
     private static final String PROJECT = "all"; // try "weurope" or "canada"
     private static final String API_URL = "/v2/identify/" + PROJECT + "?api-key=";
@@ -126,6 +122,7 @@ public class Galeria  extends AppCompatActivity {
                     String responseBody = null;
                     try {
                         responseBody = response.body().string();
+                        Log.e("response",responseBody);
                         JSONObject json = new JSONObject(responseBody);
                         JSONArray pages = json.getJSONArray("results");
                         String best = json.getString("bestMatch");
@@ -152,11 +149,18 @@ public class Galeria  extends AppCompatActivity {
                         visor.setVisibility(View.VISIBLE);
                         bsalir.setVisibility(View.VISIBLE);
                         if(comun != null) {
+                            int cuenta = IsInStats(comun);
+                            if(stats == null){
+                                stats = new HashMap<>();
+                            }
+                            cuenta+=1;
+                            stats.put(comun,cuenta);
+                            addStatsDataToFirestore();
                             if (activo != "") {
                                 //Log.e("listaf",list.toString());
                                 // Log.e("lista2f",list2.toString());
                                 Log.e("comun", comun);
-                                String auc = FormatearEspecie(comun);
+                                String auc = NormalizarEspecie(comun);
                                 if (list2.contains(auc)) {
                                     int pos = list2.indexOf(auc);
                                     list.remove(pos);
@@ -165,6 +169,15 @@ public class Galeria  extends AppCompatActivity {
                                 }
                                 DeletePlanta();
                             }
+                        }else{
+
+                            int cuenta = IsInStats(best);
+                            if(stats == null){
+                                stats = new HashMap<>();
+                            }
+                            cuenta+=1;
+                            stats.put(best,cuenta);
+                            addStatsDataToFirestore();
                         }
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
@@ -190,13 +203,56 @@ public class Galeria  extends AppCompatActivity {
         });
     }
 
-    private String LoadData( String email) {
+    private String LoadEmail( String email) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String savedValue = sharedPreferences.getString(email,"");
         return savedValue;
     }
 
-    private String FormatearEspecie(String aux){
+    private int IsInStats(String ccomun){
+        if(stats != null) {
+            if (!stats.isEmpty()) {
+                if (stats.containsKey(ccomun)) {
+                    if(stats.get(ccomun)!= null) {
+
+                      return ((Number)stats.get(ccomun)).intValue();
+
+                    }else {
+
+                        return 0;
+
+                    }
+
+                    }
+
+                }
+            }
+        return 0;
+    }
+
+
+    private void GetUsername() {
+        Db.collection("Usuarios").whereEqualTo("Email", LoadEmail("email"))
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("good", document.getId() + " => " + document.getData());
+                                name = document.getString("Nombre");
+                                stats = (Map<String,Integer>)document.get("Stats");
+                                //Log.e("stats",stats.toString());
+                            }
+                        } else {
+                            Log.d("error", "Error getting documents: ", task.getException());
+
+                        }
+                    }
+                });
+    }
+
+    private String  NormalizarEspecie(String aux){
 
         aux = Normalizer.normalize(aux, Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         aux = aux.toLowerCase();
@@ -204,10 +260,43 @@ public class Galeria  extends AppCompatActivity {
 
     }
 
-    private  void FormatearLista(){
+    private String LoadData( String grupo) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String savedValue = sharedPreferences.getString(grupo,"");
+        return savedValue;
+    }
+
+    private void addStatsDataToFirestore() {
+        Log.e("stats",stats.toString());
+        Map<String, Object> group = new HashMap<>();
+        group.put("Stats", stats);
+
+
+        CollectionReference user = Db.collection("Usuarios");
+
+        // below method is use to add data to Firebase Firestore.
+        user.document(name).update(group).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void Avoid) {
+                // after the data addition is successful
+                // we are displaying a success toast message.
+                Log.e("si:", "Succeed");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // this method is called when the data addition process is failed.
+                // displaying a toast message when data addition is failed.
+                Log.e("no:", "Fail");
+            }
+        });
+    }
+
+
+    private  void NormalizarLista(){
 
         for(int i = 0;i<list.size();i++) {
-            String aux = FormatearEspecie(list.get(i));
+            String aux = NormalizarEspecie(list.get(i));
             list2.add(aux);
         }
         Log.e("lista2:", list2.toString());
@@ -223,7 +312,7 @@ public class Galeria  extends AppCompatActivity {
                     if (document.exists()) {
                         Log.e("lista1",document.getData().toString());
                         list = (ArrayList<String>) document.get("Plantas");
-                        FormatearLista();
+                        NormalizarLista();
                         //Log.e("lista1",list.toString());
                     } else {
                         Log.d("no", "No such document");
@@ -290,7 +379,7 @@ public class Galeria  extends AppCompatActivity {
         bsalir.setVisibility(View.GONE);
         texto.setVisibility(View.GONE);
         visor.setVisibility(View.GONE);
-
+        GetUsername();
         activo = LoadData("select");
         Log.e("ac",activo);
 
@@ -328,7 +417,7 @@ public class Galeria  extends AppCompatActivity {
         bflor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activo != "") {
+                if(!activo.equals("")) {
                     GetData(activo); // la lista no se carga IDK
                 }
                 uploadFile(uri,"flower");
@@ -338,9 +427,9 @@ public class Galeria  extends AppCompatActivity {
         bfruto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activo != "") {
+                if(!activo.equals("")) {
                     GetData(activo); // la lista no se carga IDK
-                    FormatearLista();
+                    NormalizarLista();
                 }
                 uploadFile(uri,"fruit");
             }
@@ -350,7 +439,7 @@ public class Galeria  extends AppCompatActivity {
             public void onClick(View v) {
                 if(activo != "") {
                     GetData(activo); // la lista no se carga IDK
-                    FormatearLista();
+                   NormalizarLista();
                 }
                 uploadFile(uri,"bark");
             }
@@ -359,7 +448,7 @@ public class Galeria  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GetData(activo); // la lista no se carga IDK
-                FormatearLista();
+                NormalizarLista();
                 uploadFile(uri,"leaf");
             }
         });

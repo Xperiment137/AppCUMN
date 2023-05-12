@@ -111,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void NewUser(String email,String user,String password) {
+            Log.e("email",email);
+        Log.e("user",user);
+        Log.e("pass",password);
             SaveEmail("email", email);
             if ((!email.equals("") && !password.equals(""))) {
                 if (countChar(password) > 6) {
@@ -172,6 +175,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Uno de los campos esta vacio", Toast.LENGTH_LONG).show();
 
         }
+    }
+
+    public void onBackPressed() {
+        finish();
+        startActivity(getIntent());
+
     }
 
     @Override

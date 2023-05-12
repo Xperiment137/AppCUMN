@@ -51,8 +51,10 @@ public class datalist extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
-
                     list = (ArrayList<String>) document.get(LoadData("datonext"));
+                    if(LoadData("datonext").equals("Participantes")){
+                     list.add(document.getString("Lider"));
+                    }
                     listView.setChoiceMode(listView.CHOICE_MODE_NONE);
                     adapter = new ArrayAdapter(com.example.pruebas.datalist.this, android.R.layout.simple_list_item_1, list);
                     listView.setAdapter(adapter);
