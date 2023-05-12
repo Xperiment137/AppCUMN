@@ -183,9 +183,10 @@ public class newGroup extends AppCompatActivity {
                 }
                 File f = new File(rootPath + name + ".txt");
                 if (f.exists()) {
-                    Toast.makeText(newGroup.this, "Ya hay un grupo con ese nombre", Toast.LENGTH_SHORT).show();
+                   //Toast.makeText(newGroup.this, "Ya hay un grupo con ese nombre", Toast.LENGTH_SHORT).show();
+                    f.delete();
 
-                }else {
+                }
                     f.createNewFile();
                     FileOutputStream out = new FileOutputStream(f);
                     out.flush();
@@ -193,7 +194,7 @@ public class newGroup extends AppCompatActivity {
                     SaveName("key",name);
                     addGroupToFirestore(name,LoadEmail("email"));
 
-                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

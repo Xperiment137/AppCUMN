@@ -138,6 +138,7 @@ public class ListGroup extends AppCompatActivity {
                     if (document.exists()) {
                         if(username.equals(document.getString("Lider"))) {
                             Log.d("si", "DocumentSnapshot data: " + document.getData());
+                            // miro si es lider y si lo es le añado a la lista de miembros y borro su campo grupo de cada uno ademas del grupo
                             list2 = (ArrayList<String>) document.get("Participantes");
                             list2.add(document.getString("Lider"));
                             Log.e("act", list2.toString());
@@ -160,10 +161,9 @@ public class ListGroup extends AppCompatActivity {
     private void DeleteGrouofUser(String name) {
 
         CollectionReference grupos = Db.collection("Usuarios");
-        Map<String,Object> updates = new HashMap<>();
-        updates.put("Grupos", FieldValue.delete());
+
         for(int i = 0; i < list2.toArray().length;i++) {
-            grupos.document(list2.toArray()[i].toString()).update(updates).addOnSuccessListener(new OnSuccessListener<Void>() {
+            grupos.document(list2.toArray()[i].toString()).update("Grupos",FieldValue.arrayRemove(activo)).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void Avoid) {
                     // after the data addition is successful
@@ -233,7 +233,14 @@ public class ListGroup extends AppCompatActivity {
         if(nombre.equals(activo)) {
             activo = "";
         }
-       adapter.notifyDataSetChanged();
+
+        for(int i = 0;i<list.size();i++){
+
+         listView.setItemChecked(i,false);
+
+         }
+        
+        adapter.notifyDataSetChanged();
     }
 
 
@@ -296,7 +303,9 @@ public class ListGroup extends AppCompatActivity {
             public void onClick(View v) {
                 if(list!=null) {
                     if (!list.isEmpty()) {
-                        GetData(activo);
+                        if(!activo.equals("")) {
+                            GetData(activo);
+                        }
                     }
                 }
             }

@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -162,7 +163,7 @@ public class ListPeople extends AppCompatActivity {
 
 
         // below method is use to add data to Firebase Firestore.
-        grupos.document(name).set(group).addOnSuccessListener(new OnSuccessListener<Void>() {
+        grupos.document(name).update(group).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void Avoid) {
                 // after the data addition is successful
@@ -181,19 +182,13 @@ public class ListPeople extends AppCompatActivity {
     }
 
     private void addGroupDataToUsers() {
-        grup = new ArrayList<String>();
-        grup.add(name);
-        Map<String, Object> group = new HashMap<>();
-        group.put("Grupos", grup);
 
-        // creating a collection reference
-        // for our Firebase Firestore database.
         CollectionReference grupos = Db.collection("Usuarios");
 
         // añadir los grupos a cada participante
         pers.add(Lider);
-        for(int i = 0; i < pers.toArray().length;i++) {
-            grupos.document(pers.toArray()[i].toString()).update(group).addOnSuccessListener(new OnSuccessListener<Void>() {
+        for(int i = 0; i < pers.size();i++) {
+            grupos.document(pers.toArray()[i].toString()).update("Grupos", FieldValue.arrayUnion(name)).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void Avoid) {
                     // after the data addition is successful
